@@ -10,8 +10,6 @@ import repository.ClientRepository;
 
 import javax.validation.constraints.NotNull;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
 
@@ -34,8 +32,6 @@ public class ProcessingController {
         RiskProfile max = clients.stream().map(Client::getRiskProfile)
                 .max(Enum::compareTo)
                 .orElseThrow(() -> new RuntimeException("IDs list must not be empty"));
-
-        System.out.println(max);
 
         for (Client c : clients) {
             c.setRiskProfile(max);

@@ -1,6 +1,11 @@
 package entity;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Enumerated;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.EnumType;
+import java.util.Objects;
 
 @Entity
 @Table(name = "clients")
@@ -33,5 +38,19 @@ public class Client {
                 "id=" + id +
                 ", riskProfile=" + riskProfile +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Client client = (Client) o;
+        return id == client.id &&
+                riskProfile == client.riskProfile;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, riskProfile);
     }
 }

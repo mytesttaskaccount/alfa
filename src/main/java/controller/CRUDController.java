@@ -9,16 +9,18 @@ import javax.transaction.Transactional;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
+;
+
 @Transactional
 @Controller
 @ResponseBody
 public class CRUDController {
 
-    private final  ClientRepository clientRepository;
+    private final ClientRepository clientRepository;
+
     public CRUDController(ClientRepository clientRepository) {
         this.clientRepository = clientRepository;
     }
-
 
 
     @GetMapping("/{id}")
